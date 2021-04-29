@@ -1,1 +1,44 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+
+<nav class="navbar navbar-expand-lg navbar-text-center navbar-dark bg-warning">
+    <b class="b">State And District Maintainance</b>
+</nav>
+
+<div class="container">
+
+    <br><br>
+    <table>
+
+
+        <select class="dropdown">
+  <option *ngFor="let option of options" [value]="option">{{option}}</option>
+</select>
+        <div class="a" style="margin-left: 200%; font-size: large;"> <b>STATE</b></div>
+
+        <tr>
+            <th width="150px">
+                <button (click)=" addQuantity() " id="text" class="btn btn-primary ">Add new state</button>
+            </th>
+        </tr>
+        <tr *ngFor="let quantity of quantities().controls; ">
+            <td>
+                <input type="text" id="text" [formControl]="productForm.controls['stateName1']" [(ngModel)]="item">
+            </td>
+
+
+            <br><br>
+            <td>
+                <button type="button" [disabled]="!productForm.valid" id="text1" (click)="addToList(item)"><i class="glyphicon glyphicon-ok " ></i></button>
+                <button (click)="removeQuantity(i) " id="text1"><i class="glyphicon glyphicon-remove "></i></button>
+            </td>
+
+        </tr>
+        <div class="alert alert-danger" id="text" *ngIf="(!productForm.controls['stateName1'].valid && productForm.controls['stateName1'].touched)">
+            State name should fill first.
+        </div>
+    </table>
+</div>
