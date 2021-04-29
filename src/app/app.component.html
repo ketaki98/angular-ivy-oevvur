@@ -1,4 +1,28 @@
-<hello name="{{ name }}"></hello>
-<p>
-  Start editing to see some magic happen :)
-</p>
+<app-module></app-module>
+<div class="container">
+
+    <br><br>
+    <table>
+        <select class="dropdown">
+  <option *ngFor="let option of options" [value]="option">{{option}}</option>
+</select>
+        <div class="a" style="margin-left: 200%; font-size: large;"> <b>DISTRICT</b></div>
+        <tr>
+            <th width="150px">
+                <button (click)=" addQuantity() " id="text" [formControl]="productForm.controls['stateName1']" class="btn btn-primary ">Add new district</button>
+            </th>
+        </tr>
+        <tr *ngFor="let quantity of quantities().controls; ">
+            <td>
+                <input type="text" id="text" [formControl]="productForm.controls['stateName']" [(ngModel)]="item">
+            </td>
+
+            <br><br>
+            <td>
+                <button type="button" id="text1" [disabled]="!productForm.valid" (click)="addToList(item)"><i class="glyphicon glyphicon-ok "></i></button>
+                <button (click)="removeQuantity(i) " id="text1"><i class="glyphicon glyphicon-remove "></i></button>
+            </td>
+
+        </tr>
+    </table>
+</div>
